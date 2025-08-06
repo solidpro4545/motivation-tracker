@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+🧠 Motivation Tracker
+A simple motivation tracker built with React + TypeScript, enhanced with Cypress for E2E testing and Jest for unit testing.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with Create React App.
 
-## Available Scripts
+🛠 Tech Stack
+React + TypeScript
 
-In the project directory, you can run:
+Cypress (E2E Testing)
 
-### `npm start`
+Jest + React Testing Library (Unit Testing)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+React Router
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Custom Cypress Commands (with TypeScript types)
 
-### `npm test`
+🚀 Scripts
+Run these in your project root:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm start
+Starts the app in development mode.
+Open http://localhost:3000 to view it.
 
-### `npm run build`
+npm test
+Runs unit tests using Jest in interactive watch mode.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+npx cypress open
+Launches the Cypress Test Runner for E2E tests.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npx cypress run
+Runs Cypress tests in headless mode (great for CI/CD).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm run build
+Builds the app for production.
 
-### `npm run eject`
+🧪 Testing
+✅ Unit Testing with Jest
+bash
+Copy
+Edit
+npm test
+Tests are colocated with components and use React Testing Library syntax.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+✅ End-to-End Testing with Cypress
+bash
+Copy
+Edit
+npx cypress open
+Cypress specs are located in cypress/e2e/. Example test structure is already included.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🧾 Custom Cypress Commands
+Custom Cypress commands are declared in cypress/support/commands.ts and typed in support/index.d.ts.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Example:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+ts
+Copy
+Edit
+// cypress/support/commands.ts
+Cypress.Commands.add('login', (email, password) => {
+  cy.visit('/login');
+  cy.get('input[name=email]').type(email);
+  cy.get('input[name=password]').type(password);
+  cy.get('button[type=submit]').click();
+});
+ts
+Copy
+Edit
+// cypress/support/index.d.ts
+declare namespace Cypress {
+  interface Chainable {
+    login(email: string, password: string): Chainable<void>;
+  }
+}
+🧠 Learn More
+React Documentation
 
-## Learn More
+Cypress Documentation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Jest Documentation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Create React App Guide
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
