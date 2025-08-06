@@ -52,10 +52,6 @@ Cypress specs are located in cypress/e2e/. Example test structure is already inc
 Custom Cypress commands are declared in cypress/support/commands.ts and typed in support/index.d.ts.
 
 Example:
-
-ts
-Copy
-Edit
 // cypress/support/commands.ts
 Cypress.Commands.add('login', (email, password) => {
   cy.visit('/login');
@@ -63,15 +59,15 @@ Cypress.Commands.add('login', (email, password) => {
   cy.get('input[name=password]').type(password);
   cy.get('button[type=submit]').click();
 });
-ts
-Copy
-Edit
+
 // cypress/support/index.d.ts
 declare namespace Cypress {
   interface Chainable {
     login(email: string, password: string): Chainable<void>;
   }
 }
+
+
 🧠 Learn More
 React Documentation
 
